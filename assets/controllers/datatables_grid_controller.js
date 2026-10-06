@@ -1,0 +1,19 @@
+import { Controller } from '@hotwired/stimulus';
+export default class extends Controller {
+    static values = { endpoint: String };
+    static targets = ['table'];
+    async connect() {
+        let { default: DataTable } = await import('datatables.net-bs5');
+        this.dt = new DataTable(this.tableTarget, {
+            serverSide: true,
+            ajax: {
+                url: this.endpointValue,
+                type: 'POST'
+            }
+        })
+    }
+
+    disconnect() {
+        this.dt?.destroy(true)
+    }
+}
