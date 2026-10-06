@@ -1,1 +1,2 @@
-
+<?php
+declare(strict_types=1); namespace App\Tests\Unit\DataGrid\Enum; use App\DataGrid\Enum\FilterOperator; use PHPUnit\Framework\TestCase; final class FilterOperatorTest extends TestCase {public function testBetween():void{self::assertTrue(FilterOperator::BETWEEN->requiresSecondValue());self::assertSame('⟷',FilterOperator::BETWEEN->symbol());} public function testLike():void{self::assertTrue(FilterOperator::CONTAINS->isLike());self::assertFalse(FilterOperator::EQUALS->isLike());}}
