@@ -1,1 +1,2 @@
-
+<?php
+declare(strict_types=1); namespace App\Tests\Unit\Security\Voter; use App\Entity\User; use App\Security\Voter\UserVoter; use PHPUnit\Framework\TestCase; use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken; use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface; final class UserVoterTest extends TestCase {public function testAdminCanBulk():void{$a=(new User('a@x.test','A','X'))->setRoles(['ROLE_ADMIN'])->setPasswordHash('x');$u=(new User('u@x.test','U','X'))->setPasswordHash('x');$t=new UsernamePasswordToken($a,'main',$a->getRoles());self::assertSame(VoterInterface::ACCESS_GRANTED,(new UserVoter())->vote($t,$u,[UserVoter::BULK_ACTIVATE]));}}
