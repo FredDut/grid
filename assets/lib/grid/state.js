@@ -1,0 +1,1 @@
+export class State{constructor(){this.page=1;this.pageSize=25;this.filters=[];this.sorts=[];this.selected=new Set();this.globalSearch='';} payload(){return{page:this.page,pageSize:this.pageSize,filters:this.filters,sorts:this.sorts,globalSearch:this.globalSearch||null};}}
